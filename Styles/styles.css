@@ -1,0 +1,153 @@
+:root {
+  --bg-color: #ffffff;
+  --text-color: #333333;
+  --show-light-btn: none;
+  --show-dark-btn: inline-block;
+  --children-display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #121212;
+    --text-color: #ffffff;
+    --show-light-btn: inline-block;
+    --show-dark-btn: none;
+  }
+}
+
+:root:has(#force-dark:checked) {
+  --bg-color: #121212;
+  --text-color: #ffffff;
+  --show-light-btn: inline-block;
+  --show-dark-btn: none;
+}
+
+:root:has(#force-light:checked) {
+  --bg-color: #ffffff;
+  --text-color: #333333;
+  --show-light-btn: none;
+  --show-dark-btn: inline-block;
+}
+
+.theme-trigger {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.custom-button {
+  display: inline-block;
+  background-color: #0076ff;
+  cursor: pointer;
+  user-select: none;
+}
+
+.btn-dark { display: var(--show-dark-btn); }
+.btn-light { display: var(--show-light-btn); }
+
+body {
+  font: normal 16px sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button, .btn {
+  font: bold 14px sans-serif;
+  padding: 7.5px 15px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+button:hover, .btn:hover {
+  filter: drop-shadow(2px 3px 0 #4CAF50) brightness(1.1);
+  z-index: 9999;
+}
+
+button:active, .btn:active {
+  transform: translate(2px, 2px);
+  filter: drop-shadow(0 1px 0 #4CAF50);
+}
+
+.btn {
+  bottom: 20px;
+  right: 20px;
+  position: fixed;
+}
+
+.ver {
+  font: bold 12px monospace;
+  color: grey;
+  position: sticky;
+  top: 0px;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.logo {
+  height: 1em;
+  width: auto;
+  vertical-align: -0.125em;
+}
+
+.folderBtn {
+  font: bold 18px sans-serif;
+  padding: 9.64275px 19.2855px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+/*#force-open:checked ~ .children {
+  display: block;
+}
+
+#force-close:checked ~ .children {
+  display: none;
+}
+
+.children {
+  display: block;
+}*/
+
+.show {
+  display: block;
+}
+
+#fillerBottom {
+  display: none;
+}
+@media (max-width: 650px) {
+  #fillerBottom {
+  padding: 50px;
+  position: relative;
+  display: block;
+}
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 0 12px;
+    flex: 0 1 auto;
+  }
+
+  .row {
+    display: flex;
+    align-items: center; 
+    gap: 12px;           
+    width: 100%;  
+  }
+
+  button, .btn {
+    padding: 10px 16px; margin: 4px 0;
+    flex-shrink: 0;
+  }
+}
