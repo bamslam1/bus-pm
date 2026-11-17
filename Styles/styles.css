@@ -47,16 +47,22 @@
 
 body {
   font: normal 16px sans-serif;
-  background-color: var(--bg-color);
-  color: var(--text-color);
+  color: #ffffff;
+  background: transparent; color: white;
   font-family: sans-serif;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+html {
+  background-color: var(--bg-color);
+}
+
+p, span {mix-blend-mode: difference;}
+
 button, .btn {
   font: bold 14px sans-serif;
   padding: 7.5px 15px;
-  background-color: #4CAF50;
+  background-color: #0076ff;
   color: white;
   border: none;
   border-radius: 5px;
@@ -65,16 +71,16 @@ button, .btn {
 }
 
 button:hover, .btn:hover {
-  filter: drop-shadow(2px 3px 0 #4CAF50) brightness(1.1);
+  filter: drop-shadow(2px 3px 0 #0076ff) brightness(1.1);
   z-index: 9999;
 }
 
 button:active, .btn:active {
   transform: translate(2px, 2px);
-  filter: drop-shadow(0 1px 0 #4CAF50);
+  filter: drop-shadow(0 1px 0 #0076ff);
 }
 
-.btn {
+.btn, .js-req {
   bottom: 20px;
   right: 20px;
   position: fixed;
@@ -98,7 +104,7 @@ button:active, .btn:active {
 .folderBtn {
   font: bold 18px sans-serif;
   padding: 9.64275px 19.2855px;
-  background-color: #4CAF50;
+  background-color: #0076ff;
   color: white;
   border: none;
   border-radius: 5px;
@@ -112,19 +118,60 @@ button:active, .btn:active {
 
 #force-close:checked ~ .children {
   display: none;
-}
+}*/
 
 .children {
-  display: block;
-}*/
+  display: relative;
+  margin-left: 1.5rem;
+}
 
 .show {
   display: block;
 }
 
+.select,
+.select::picker(select) {
+  appearance: base-select;
+  font: bold 14px sans-serif;
+  cursor: pointer;
+}
+
+.select:open::picker-icon {
+  content: "▼";
+}
+
+.select::picker-icon {
+  content: "▲";
+}
+
+.select option:hover,
+.select option:focus-visible {
+  filter: brightness(1.25);
+  outline: 2px solid black;
+  outline-offset: -2px;
+}
+
+.select option::checkmark { display: none; }
+
+.select {
+  mix-blend-mode: normal;
+  background-color: #0076ff;
+  color: white;
+  border-radius: 5px;
+}
+
+.js-req {
+  display: block;
+}
+
+.legacy {
+  display: none;
+}
+
 #fillerBottom {
   display: none;
 }
+
 @media (max-width: 650px) {
   #fillerBottom {
   padding: 50px;
